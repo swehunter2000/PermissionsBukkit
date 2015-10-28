@@ -50,7 +50,7 @@ public final class PermissionsPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(playerListener, this);
 
         // Register everyone online right now
-        for (Player p : getServer().getOnlinePlayers()) {
+        for (Player p : getServer().getOnlinePlayers().toArray()) {
             registerPlayer(p);
         }
 
@@ -62,7 +62,7 @@ public final class PermissionsPlugin extends JavaPlugin {
         }
 
         // How are you gentlemen
-        int count = getServer().getOnlinePlayers().length;
+        int count = getServer().getOnlinePlayers().toArray().length;
         if (count > 0) {
             getLogger().info("Enabled successfully, " + count + " online players registered");
         } else {
@@ -150,12 +150,12 @@ public final class PermissionsPlugin extends JavaPlugin {
     @Override
     public void onDisable() {
         // Unregister everyone
-        for (Player p : getServer().getOnlinePlayers()) {
+        for (Player p : getServer().getOnlinePlayers().toArray()) {
             unregisterPlayer(p);
         }
 
         // Good day to you! I said good day!
-        int count = getServer().getOnlinePlayers().length;
+        int count = getServer().getOnlinePlayers().toArray().length;
         if (count > 0) {
             getLogger().info("Disabled successfully, " + count + " online players unregistered");
         }
